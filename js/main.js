@@ -4,7 +4,7 @@ $(function () {
 
 function Retrieve() {
     var dataArray = [];
-    var URL = 'https://script.google.com/macros/s/AKfycbwDE0mS8auShlAjix7-xpAScQgzBv7VW76fxFw2RQpFoGiNKHNjqWGux2wYXPFhip3p/exec';
+    var URL = 'https://script.google.com/macros/s/AKfycbyXKlodjxpKUngrpB2kqS2QhujLXEme3R_5MZRpowJspWPsEtOq7eMdWhC3NDyr3ICVEA/exec';
     $.ajax({
         url: URL,
         type: 'POST',
@@ -16,7 +16,10 @@ function Retrieve() {
             var Info = Jdata.data;
             for (i = 0; Info.length > i; i++) {
                 FillTime = Info[i].FillTime;
+                Department = Info[i].Department;
                 Applicant = Info[i].Applicant;
+                RoomName = Info[i].RoomName;
+                BorrowDate = Info[i].BorrowDate;
                 StartTime = Info[i].StartTime;
                 EndTime = Info[i].EndTime;
                 Reason = Info[i].Reason;
@@ -29,14 +32,17 @@ function Retrieve() {
                 $("#table-data").append(
                     '<tr>' +
                         '<td class="w-15">' + FillTime + '</td>' +
+                        '<td class="w-10">' + Department + '</td>' +
                         '<td class="w-10">' + Applicant + '</td>' +
+                        '<td class="w-10">' + RoomName + '</td>' +
+                        '<td class="w-15">' + BorrowDate + '</td>' +
                         '<td class="w-15">' + StartTime + '</td>' +
                         '<td class="w-15">' + EndTime + '</td>' +
                         '<td class="w-10">' + Reason + '</td>' +
                     '</tr>'
                 );
             };
-            // 會議室搜尋            
+            // 設備搜尋            
 			$("#doaction").click(function(){
                 select();
             });
